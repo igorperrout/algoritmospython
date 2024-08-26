@@ -1,0 +1,67 @@
+#2º Período de Engenharia de Software, UNIVASSOURAS, Saquarema - RJ
+#Tarefa:
+#Você foi contratado para ajudar no desenvolvimento de um sistema de cadastro de clientes para a
+#empresa ExpertDEVS. O objetivo é criar uma aplicação simples que permita gerenciar os
+#requisitos relacionados aos dados de clientes.
+
+def adicionar_cliente(nome, email, telefone, endereco):
+    cliente = [nome, email, telefone, endereco]
+    clientes.append(cliente)
+    print(f"Cliente '{nome}' adicionado com sucesso!")
+
+def exibir_clientes():
+    if not clientes:
+        print("Nenhum cliente cadastrado.")
+        return
+    print("Clientes cadastrados:")
+    for cliente in clientes:
+        print(f"Nome: {cliente[0]}, E-mail: {cliente[1]}, Telefone: {cliente[2]}, Endereço: {cliente[3]}")
+
+def buscar_cliente(email):
+    for cliente in clientes:
+        if cliente[1] == email:
+            print(f"Cliente encontrado: Nome: {cliente[0]}, E-mail: {cliente[1]}, Telefone: {cliente[2]}, Endereço: {cliente[3]}")
+            return
+    print("Cliente não encontrado.")
+
+def remover_cliente(email):
+    for cliente in clientes:
+        if cliente[1] == email:
+            clientes.remove(cliente)
+            print(f"Cliente '{cliente[0]}' removido com sucesso!")
+            return
+    print("Cliente não encontrado.")
+
+def menu():
+    while True:
+        print("\nMenu:")
+        print("1. Adicionar Cliente")
+        print("2. Exibir Clientes")
+        print("3. Buscar Cliente por E-mail")
+        print("4. Remover Cliente")
+        print("5. Sair")
+        
+        opcao = input("Escolha uma opção: ")
+        
+        if opcao == '1':
+            nome = input("Nome: ")
+            email = input("E-mail: ")
+            telefone = input("Telefone: ")
+            endereco = input("Endereço: ")
+            adicionar_cliente(nome, email, telefone, endereco)
+        elif opcao == '2':
+            exibir_clientes()
+        elif opcao == '3':
+            email = input("Digite o e-mail do cliente: ")
+            buscar_cliente(email)
+        elif opcao == '4':
+            email = input("Digite o e-mail do cliente a ser removido: ")
+            remover_cliente(email)
+        elif opcao == '5':
+            print("Saindo do sistema.")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    menu()
